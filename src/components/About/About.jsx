@@ -44,7 +44,7 @@ const About = () => {
 
 
           </p>
-          {/* Resume Button */}
+        
           <a
             href="https://drive.google.com/file/d/1SLZ0QFKfTLYeoB5a9e5nrVU8BEiY5zYg/view?usp=sharing"
             target="_blank"
