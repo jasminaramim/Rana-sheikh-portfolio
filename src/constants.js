@@ -13,7 +13,7 @@ export const SkillsInfo = [
    // Replace with actual URL
       { name: 'GetX', logo: 'https://i.ibb.co.com/ksYcFvCD/images-removebg-preview.png' }, // Replace with actual URL
       { name: 'BLoC', logo: 'https://i.ibb.co.com/yFPDnD23/images-removebg-preview-1.png' },
-      { name: 'Supabase', logo: 'https://i.ibb.co.com/PsCsDFXc/download-9-removebg-preview.png' }, // Replace with actual URL
+      
     ],
   },
   {
@@ -28,6 +28,7 @@ export const SkillsInfo = [
     skills: [
       { name: 'Firebase', logo: 'https://i.ibb.co.com/hJKwKmX5/download-3-removebg-preview.png' }, // Replace with actual URL
       { name: 'REST API', logo: 'https://i.ibb.co.com/fG2NHpLh/images-3-removebg-preview.png' }, // Replace with actual URL
+      { name: 'Supabase', logo: 'https://i.ibb.co.com/PsCsDFXc/download-9-removebg-preview.png' }, // Replace with actual URL
     ],
   },
   {
