@@ -123,32 +123,51 @@ export const education = [
 export const projects = [
   {
     id: 0,
-    title: "Flutter Todo App",
+    title: "Bazario - Ecommerce App",
     description:
-      "A cross-platform todo list application built with Flutter and Dart, allowing users to create, update, and delete tasks with a clean and intuitive UI. The app integrates with Firebase for real-time data synchronization and user authentication, ensuring tasks are securely stored and accessible across devices.",
-    image: 'https://i.imgur.com/flutter-todo-logo.png', // Replace with actual URL
-    tags: ["Flutter", "Dart", "Firebase", "Provider", "Cross-Platform"],
-    github: "https://github.com/username/flutter-todo-app", // Replace with your GitHub link
-    webapp: "https://play.google.com/store/apps/details?id=com.example.flutter_todo", // Replace with actual app store link
+      "A robust cross-platform ecommerce application built with Flutter and Dart, enabling users to browse, purchase, and manage products seamlessly. The app integrates Firebase for real-time data synchronization, user authentication, and secure payment processing, providing a smooth shopping experience across Android and iOS devices.",
+    logo: "",
+    image: "https://i.ibb.co/23bMn6cm/Whats-App-Image-2025-05-30-at-15-31-06-21cc207f.jpg", // Added for card display
+    images: [
+      "https://i.ibb.co/ymW09hy4/Whats-App-Image-2025-05-30-at-15-11-34-cb031f65.jpg",
+      "https://i.ibb.co/yF7g44Kr/Whats-App-Image-2025-05-30-at-15-11-33-97e31627.jpg",
+      "https://i.ibb.co/1tJnyYBJ/Whats-App-Image-2025-05-30-at-15-11-32-d5d6e1c9.jpg"
+
+    ],
+    tags: ["Flutter", "Dart", "Firebase", "Ecommerce", "Cross-Platform"],
+    github: "https://github.com/ranasheikh6424/bazario-e-commerce",
+    webapp: "https://github.com/ranasheikh6424/bazario-e-commerce/releases/download/e-commerce/app-release.apk",
   },
   {
     id: 1,
-    title: "Weather Forecast App",
+    title: "Task Management",
     description:
-      "A Flutter-based mobile app that provides real-time weather updates for any location worldwide. The app fetches data from a public weather API and displays it with a sleek UI, featuring dynamic backgrounds based on weather conditions. It uses the BLoC pattern for state management to ensure a smooth user experience.",
-    image: 'https://i.imgur.com/weather-app-logo.png', // Replace with actual URL
-    tags: ["Flutter", "Dart", "BLoC", "REST API", "Cross-Platform"],
-    github: "https://github.com/username/weather-forecast-app", // Replace with your GitHub link
-    webapp: "https://play.google.com/store/apps/details?id=com.example.weather_forecast", // Replace with actual app store link
+      "A productivity-focused mobile app developed using Flutter and Dart, designed to help users manage their tasks efficiently. Features include task creation, categorization, reminders, and progress tracking, with local storage via SQLite for offline access and Firebase for cloud synchronization. The app uses Provider for state management and supports both Android and iOS.",
+    // logo: "https://via.placeholder.com/100?text=Task+Management+Logo",
+    image: "https://i.ibb.co/JwKG7LC1/Whats-App-Image-2025-05-30-at-15-31-31-c7849b1e.jpg", // Added for card display
+    images: [
+      "https://i.ibb.co/rXybQ5S/Whats-App-Image-2025-05-30-at-15-11-08-b2f9bb80.jpg",
+      "https://i.ibb.co/sZfL5C7/Whats-App-Image-2025-05-30-at-15-11-08-0d12ff65.jpg",
+      "https://i.ibb.co/hJZqq8N2/Whats-App-Image-2025-05-30-at-15-11-07-d687a8f4.jpg",
+    ],
+    tags: ["Flutter", "Dart", "Firebase", "Cross-Platform"],
+    github: "https://github.com/ranasheikh6424/task-management",
+    webapp: "https://github.com/ranasheikh6424/task-management/releases/download/app/app-release.apk",
   },
   {
     id: 2,
-    title: "Expense Tracker",
+    title: "Weather Forecast (Upcoming)",
     description:
-      "A personal finance app built with Flutter to help users track their daily expenses and manage budgets. The app features local storage using SQLite for offline access, along with charts to visualize spending patterns. It leverages Riverpod for state management and supports both Android and iOS platforms.",
-    image: 'https://i.imgur.com/expense-tracker-logo.png', // Replace with actual URL
-    tags: ["Flutter", "Dart", "Riverpod", "SQLite", "Cross-Platform"],
-    github: "https://github.com/username/expense-tracker-app", // Replace with your GitHub link
-    webapp: "https://play.google.com/store/apps/details?id=com.example.expense_tracker", // Replace with actual app store link
+      "An upcoming Flutter-based mobile app that will deliver real-time weather updates for locations worldwide. The app will fetch data from a public weather API and feature a dynamic UI with weather-based backgrounds. It will utilize the BLoC pattern for state management, ensuring a seamless and responsive experience across Android and iOS platforms.",
+    // logo: "https://via.placeholder.com/100?text=Weather+Forecast+Logo",
+    image: "https://i.ibb.co/v6qx36k0/download-9.jpg", // Added for card display
+    images: [
+      "https://i.ibb.co/B5Fz1g7c/images-1.jpg",
+      "https://i.ibb.co/1tJ3Lcx5/images.jpg",
+      "https://i.ibb.co/v6qx36k0/download-9.jpg",
+    ],
+    tags: ["Flutter", "Dart", "REST API", "Cross-Platform", "Upcoming"],
+    github: "https://github.com/username/weather-forecast-app",
+    webapp: "",
   },
 ];

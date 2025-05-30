@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import { projects } from "../../constants";
 import { FiGithub, FiExternalLink, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { FaDownload } from "react-icons/fa";
 
 const Work = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleOpenModal = (project) => {
     setSelectedProject(project);
+    setCurrentImageIndex(0);
     document.body.style.overflow = "hidden";
   };
 
@@ -17,7 +21,6 @@ const Work = () => {
     document.body.style.overflow = "auto";
   };
 
-  // Close modal on ESC key press
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -28,32 +31,36 @@ const Work = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? selectedProject.images.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev === selectedProject.images.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <section
       id="projects"
       className="relative py-28 px-4 sm:px-6 lg:px-8 xl:px-10 bg-gradient-to-b from-gray-900 via-gray-950 to-black overflow-hidden"
     >
-      {/* Background image with 50% opacity */}
       <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url('https://i.ibb.co/Ld5cCc0L/3d-render-modern-background-with-flowing-cyber-particles.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed", // Parallax effect; use "scroll" for standard scrolling
+          backgroundAttachment: "fixed",
           opacity: 0.2,
         }}
       ></div>
 
-      {/* Floating gradient elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 z-1">
         <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-purple-900 blur-[100px] animate-float"></div>
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-indigo-900 blur-[120px] animate-float-delay"></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +79,6 @@ const Work = () => {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <motion.div
@@ -84,9 +90,8 @@ const Work = () => {
               onClick={() => handleOpenModal(project)}
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
-              className="group relative border border-gray-800  backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:purple-900/10 transition-all duration-500  h-full flex flex-col"
+              className="group relative border border-gray-800 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:bg-purple-900/10 transition-all duration-500 h-full flex flex-col"
             >
-              {/* Project image with overlay */}
               <div className="relative overflow-hidden flex-grow">
                 <img
                   src={project.image}
@@ -104,7 +109,6 @@ const Work = () => {
                 </div>
               </div>
 
-              {/* Project info */}
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
                   {project.title}
@@ -125,7 +129,6 @@ const Work = () => {
                 </div>
               </div>
 
-              {/* Glow effect when hovered */}
               {hoveredProject === project.id && (
                 <motion.div
                   className="absolute inset-0 rounded-2xl pointer-events-none"
@@ -142,7 +145,6 @@ const Work = () => {
         </div>
       </div>
 
-      {/* Project Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -161,7 +163,6 @@ const Work = () => {
               className="bg-gray-900 rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto relative border border-gray-800"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
                 onClick={handleCloseModal}
                 className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-thin z-10 bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-700 transition-colors"
@@ -171,16 +172,52 @@ const Work = () => {
               </button>
 
               <div className="flex flex-col lg:flex-row">
-                {/* Project image */}
-                <div className="lg:w-1/2 w-full bg-gradient-to-br from-gray-800 to-gray-900 p-6 sm:p-8 flex items-center justify-center">
+                {/* Slider on the left */}
+                <div className="lg:w-1/2 w-full bg-gradient-to-br from-gray-800 to-gray-900 p-6 sm:p-8 flex flex-col items-center justify-center relative">
+                  {/* Logo above the slider */}
                   <motion.img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-auto max-h-[400px] object-contain rounded-lg shadow-xl"
+                    // src={selectedProject.logo}
+                    // alt={`${selectedProject.title} Logo`}
+                    // className="w-20 h-20 object-contain rounded-full mb-4 shadow-md"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.1 }}
                   />
+                  <motion.button
+                    onClick={handlePrevImage}
+                    className="absolute left-4 text-white text-2xl bg-black/50 rounded-full p-2 hover:bg-purple/50 transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <BsChevronLeft />
+                  </motion.button>
+                  <motion.img
+                    src={selectedProject.images[currentImageIndex]}
+                    alt={`${selectedProject.title} Slide ${currentImageIndex + 1}`}
+                    className="w-full h-auto max-h-[350px] object-contain rounded-lg shadow-xl"
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.button
+                    onClick={handleNextImage}
+                    className="absolute right-4 text-white text-2xl bg-black/50 rounded-full p-2 hover:bg-purple/50 transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <BsChevronRight />
+                  </motion.button>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                    {selectedProject.images.map((_, index) => (
+                      <motion.div
+                        key={index}
+                        className={`w-3 h-3 rounded-full ${currentImageIndex === index ? "bg-purple" : "bg-gray-500"}`}
+                        onClick={() => setCurrentImageIndex(index)}
+                        whileHover={{ scale: 1.2 }}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 {/* Project details */}
@@ -242,17 +279,19 @@ const Work = () => {
                       <FiGithub className="text-lg" />
                       View Code
                     </motion.a>
-                    <motion.a
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      href={selectedProject.webapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/30"
-                    >
-                      <FiExternalLink className="text-lg" />
-                      View Live
-                    </motion.a>
+                    {selectedProject.webapp && (
+                      <motion.a
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        href={selectedProject.webapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/30"
+                      >
+                        <FaDownload className="text-lg" />
+                        Install Now !
+                      </motion.a>
+                    )}
                   </motion.div>
                 </div>
               </div>
@@ -261,7 +300,6 @@ const Work = () => {
         )}
       </AnimatePresence>
 
-      {/* Animation styles */}
       <style jsx>{`
         @keyframes float {
           0%,

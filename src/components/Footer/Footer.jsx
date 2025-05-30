@@ -1,9 +1,8 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube, FaArrowUp } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaYoutube, FaArrowUp, FaPhone, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Footer = () => {
-  // Smooth scroll function
   const handleScroll = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -28,7 +27,7 @@ const Footer = () => {
       <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-pink-900 opacity-20 blur-xl"></div>
       
       <div className="container mx-auto text-center relative z-10">
-        {/* Name / Logo with animation */}
+        {/* Name / Logo */}
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,7 +39,28 @@ const Footer = () => {
         
         <p className="text-gray-400 text-sm mb-6">Full Stack Developer & Problem Solver</p>
 
-        {/* Navigation Links - Responsive with hover effects */}
+        {/* Contact Information */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+          <motion.a 
+            href="tel:+8801613475871"
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors"
+          >
+            <FaPhone className="text-purple-400" />
+            <span>+880 1613-475871</span>
+          </motion.a>
+          
+          <motion.a 
+            href="mailto:rana6424sheikh@gmail.com"
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors"
+          >
+            <FaEnvelope className="text-purple-400" />
+            <span>rana6424sheikh@gmail.com</span>
+          </motion.a>
+        </div>
+
+        {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 mb-8">
           {[
             { name: "About", id: "about" },
@@ -61,7 +81,7 @@ const Footer = () => {
           ))}
         </nav>
 
-        {/* Social Media Icons - Responsive with animations */}
+        {/* Social Media Icons */}
         <div className="flex flex-wrap justify-center gap-5 sm:gap-6 mt-6 mb-8">
           {[
             { icon: <FaFacebook />, link: "https://www.facebook.com/md.rana.sheikh.598370" },
@@ -97,15 +117,14 @@ const Footer = () => {
           <FaArrowUp />
         </motion.button>
 
-        {/* Copyright Text with subtle animation */}
+        {/* Copyright */}
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           className="text-sm text-gray-500 mt-8 border-t border-gray-800 pt-6"
         >
-          © {new Date().getFullYear()} Rana Sheikh. All rights reserved.<br />
-          Crafted with ❤️ and React
+          © {new Date().getFullYear()} Rana Sheikh. All rights reserved.
         </motion.p>
       </div>
     </footer>
